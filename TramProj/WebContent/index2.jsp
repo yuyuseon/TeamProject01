@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>두번째 인덱스 파일입니다.</h2>
+	<h2>두번째 인덱스 파일입니다.1</h2>
 </body>
 </html>
