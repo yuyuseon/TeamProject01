@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<ul>
-		<li>학원에서 만든 index파일</li>
-		<li>첫번째 수정111</li>
-	</ul>
+	<h2>두번째 인덱스 파일입니다.</h2>
 </body>
 </html>
