@@ -133,7 +133,7 @@ if(request.getAttribute("RESULT")!=null){
               </table>
               
               <table class="table table-bordered">
-            	<tr>
+            	<tr class="info">
             		<th colspan="3">${memberInfo.user_id } 작성 후기 리스트</th>
             	</tr>
             	<tr>

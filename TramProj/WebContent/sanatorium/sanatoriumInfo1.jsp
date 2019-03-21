@@ -149,7 +149,7 @@ if(request.getAttribute("RESULT")!=null){
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-          	시설 정보 입력
+          	병원 시설 정보 입력
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -428,7 +428,9 @@ if(request.getAttribute("RESULT")!=null){
               	</td>
               </tr>
             </table>
+            <div style="text-align: right;">
             <button class="btn btn-info" type="submit" style="color: white;">등록</button>
+            </div>
             </form>
             </div>
             <div style="text-align: right;">

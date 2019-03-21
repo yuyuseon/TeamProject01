@@ -93,15 +93,7 @@ if(request.getAttribute("ERROR_MSG")!=null){
 <%
 }
 %>
-<%
-if(request.getAttribute("UPDATE")!=null){
-%>
-	<script>
-	alert("정보 수정에 성공하였습니다.");
-	</script>
-<%
-}
-%>
+
 <html lang="en">
 
 <head>
@@ -166,78 +158,62 @@ if(request.getAttribute("RESULT")!=null){
     <div id="content-wrapper">
 
       <div class="container-fluid">
-
+		
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-          	${sanatoriumInfo.organ_name } 시설 정보
+          	${organ_type } 시설 정보 입력
           </div>
           <div class="card-body">
             <div class="table-responsive">
             <form
 			name="writeFrm"
 			method="post"
-			action="./SanatoriumUpdateCtrl.do"
+			action="./SanatoriumInsert2Ctrl.do"
 			onsubmit="return frmValidata(this);"
 			>
               <table class="table table-bordered">
               <tr>
               	<th>시설 관리자 계정</th>
               	<th colspan="2">
-	              	<a href="./MemberInfoCtrl.do?user_id=${sanatoriumInfo.user_id }" >
-					${sanatoriumInfo.user_id }
-					</a>
-					<input type="text" class="form-control" name="user_id" value="${sanatoriumInfo.user_id }" />
+					<input type="text" class="form-control" name="user_id" value="" />
               	</th>
               </tr>
               <tr>
-              	<th>기관코드</th>
-              	<th colspan="2">기관명</th>
+              	<th colspan="3">기관명</th>
               </tr>
               <tr>
-              	<td>
-              	<input type="text" class="form-control" value="${sanatoriumInfo.organ_idx }" name="organ_idx" readonly="readonly"/> </td>
-              	<td colspan="2"><input type="text" class="form-control" name="organ_name" value="${sanatoriumInfo.organ_name }" /> </td>
+              	<td colspan="3"><input type="text" class="form-control" value="" name="organ_name"/> </td>
               </tr>
-              
               <tr>
-
               	<th>등급</th>
               	<th colspan="2">전화번호</th>
-              	
               </tr>
               <tr>
              	<td>
-              		<c:set var="organ_grade" value="${sanatoriumInfo.organ_grade }"/>
               		<select name="organ_grade" class="form-control" >
-						<option value="정보없음"  <c:if test="${organ_grade eq '정보없음'}"> selected</c:if>>정보없음</option>
-						<option value="A등급" <c:if test="${organ_grade eq 'A등급'}"> selected</c:if>>A등급</option>
-						<option value="B등급" <c:if test="${organ_grade eq 'B등급'}"> selected</c:if>>B등급</option>
-						<option value="C등급" <c:if test="${organ_grade eq 'C등급'}"> selected</c:if>>C등급</option>
-						<option value="D등급" <c:if test="${organ_grade eq 'D등급'}"> selected</c:if>>D등급</option>
+						<option value="정보없음" >정보없음</option>
+						<option value="A등급" >A등급</option>
+						<option value="B등급" >B등급</option>
+						<option value="C등급" >C등급</option>
+						<option value="D등급" >D등급</option>
 					</select> 
               	</td>
-              	<td colspan="2"><input type="text" class="form-control" name="organ_phone" value="${sanatoriumInfo.organ_phone }" /> </td>
+              	<td colspan="2"><input type="text" name="organ_phone" class="form-control" value="" /> </td>
               </tr>
               
               <tr>
-              	<th colspan="2">주소</th>
-              	<th>위치</th>
-              	
-              	
+              	<th colspan="3">주소</th>
               </tr>
               <tr>
-                <td colspan="2">
-                <input type="text" class="form-control" n value="${sanatoriumInfo.organ_address }" /> 
+                <td colspan="3">
                 	<select id="address1" name="address1" class="" style="width: 130px; height:40px; border-radius:4px;" ></select>	
 					<select id="address2" name="address2" class="" style="width: 100px; height:40px; border-radius:4px;"></select>
 					<select id="address3" name="address3" class="" style="width: 100px; height:40px; border-radius:4px;"></select>
 					<input type="text" id="address4" name="address4" class="form-control" placeholder="상세주소" style="width: 400px;"/>
-                	<input type="hid-den" name="organ_address" id="organ_address" value="${sanatoriumInfo.organ_address }"/>
+                	<input type="hidden" name="organ_address" id="organ_address"/>
 
-                </td>
-                <td><input type="text" class="form-control" readonly="readonly" value="${sanatoriumInfo.organ_loc }" /> </td>
-                
+                </td>                
               </tr>
               
               <tr>
@@ -246,24 +222,26 @@ if(request.getAttribute("RESULT")!=null){
               	<th>승인일</th>
               </tr>
               <tr>
-	            <td><input type="text" class="form-control" name="organ_code" value="${sanatoriumInfo.organ_code }" /> </td>
+	            <td><input type="text" class="form-control" name="organ_code" value="" /> </td>
 	            <td>
 		            <div class="form-group">
-				      <input type="date" class="form-control" id="usr" name="organ_fundate" value="${sanatoriumInfo.organ_fundate }">
+				      <input type="date" class="form-control" id="usr" name="organ_fundate" value="">
 				    </div>
 	            <td>
 		            <div class="form-group">
-				      <input type="date" class="form-control" id="usr" name="organ_appdate" value="${sanatoriumInfo.organ_appdate }">
+				      <input type="date" class="form-control" id="usr" name="organ_appdate" value="">
 				    </div>
 	            </td>
               </tr>
               
               <tr>
               	<th colspan="3">기타시설</th>
+              	
+              	
               </tr>
               <tr>
                 <td colspan="3">
-                	<input type="text" class="form-control" name="organ_etc" value="${sanatoriumInfo.organ_etc }" /> </td>
+                	<input type="text" class="form-control" value="" name="organ_etc"/> </td>
                 
               </tr>
               <tr>
@@ -273,21 +251,21 @@ if(request.getAttribute("RESULT")!=null){
               </tr>
               <tr>
                 <td colspan="3">
-                	<input type="text" class="form-control" name="organ_park" value="${sanatoriumInfo.organ_park }" /> </td>
+                	<input type="text" class="form-control" value="" name="organ_park"/> </td>
               </tr>
               <tr>
               	<th colspan="3" >인력현황</th>
               </tr>
               <tr>
                 <td colspan="3">
-                	<input type="text" class="form-control" name="organ_hr" value="${sanatoriumInfo.organ_hr }" /> </td>
+                	<input type="text" class="form-control" name="organ_hr" value="" placeholder="조리사(1)"/> </td>
               </tr>
               <tr>
               	<th colspan="3">침실현황</th>
               </tr>
               <tr>
                 <td colspan="3">
-                	<input type="text" class="form-control" name="organ_bedroom" value="${sanatoriumInfo.organ_bedroom }" /> </td>
+                	<input type="text" class="form-control" value="" name="organ_bedroom" placeholder="물리치료실(7),일반병상(196)"/> </td>
               </tr>
               
               <tr>
@@ -296,80 +274,32 @@ if(request.getAttribute("RESULT")!=null){
               	<th>비급여현황_미용비(1회)</th>
               </tr>
               <tr>
-                <td><input type="number" class="form-control" name="organ_nonpayfood" value="${sanatoriumInfo.organ_nonpayfood }" /> </td>
-                <td><input type="number" class="form-control" name="organ_nonpaysnack" value="${sanatoriumInfo.organ_nonpaysnack }" /> </td>
-                <td><input type="number" class="form-control" name="organ_nonpayhaircut" value="${sanatoriumInfo.organ_nonpayhaircut }" /> </td>
+                <td><input type="number" class="form-control" name="organ_nonpayfood" value="" /> </td>
+                <td><input type="number" class="form-control" name="organ_nonpaysnack"  value="" /> </td>
+                <td><input type="number" class="form-control" name="organ_nonpayhaircut" value="" /> </td>
               	
               </tr>
               <tr>
               	<th colspan="3">시설 정보</th>
               </tr>
               <tr>
-              	<td colspan="3"><input type="text" class="form-control" name="organ_comment" value="${sanatoriumInfo.organ_comment }" /></td>
-              </tr>
-              <tr>
-              	<th>노출여부</th>
-              	<td colspan="2">
-              	<c:set var="organ_view" value="${sanatoriumInfo.organ_view }"/>
-             	<select name="organ_view" class="form-control" >
-					<option value="미노출"  <c:if test="${organ_grade eq '미노출'}"> selected</c:if>>미노출</option>
-					<option value="노출" <c:if test="${organ_grade eq '노출'}"> selected</c:if>>노출</option>
-				</select>
-				</td>
+              	<td colspan="3"><input type="text" name="organ_comment" class="form-control" value="" /></td>
               </tr>
               <tr>
               	<th>타입</th>
               	<td colspan="2">${organ_type }</td>
-              	<input type="hidden" name="organ_type" value="${organ_type }" />
+              	<input type="hidden" name="organ_type" value="${organ_type }"/>
               </tr>
               </table>
               <div style="text-align: right;">
-	          	<button class="btn btn-danger" type="submit" style="color: white;">수정하기</button>
-	          </div>
+              <button class="btn btn-info" type="submit" style="color: white;">등록</button>
+              </div>
               </form>
             </div>
             
             
             
-            <table class="table table-bordered">
-            	<tr>
-            		<th colspan="4">후기 리스트</th>
-            	</tr>
-            	<tr>
-            		<td style="width: 20%;">작성 ID</td>
-            		<td style="width: 15%;">평점</td>
-            		<td style="width: 50%;">내용</td>
-            		<td style="width: 15%;">삭제</td>
-            	</tr>
-            	<c:choose>
-					<c:when test="${empty colists }">
-						<tr style="text-align: center;">
-							<td colspan="4">
-								등록된 댓글이 없습니다.
-							</td>
-						</tr>
-					</c:when>
-					<c:otherwise>
-						<c:forEach items="${colists }" var="row" varStatus="loop">
-							<tr>
-								<td>
-									<a href="./MemberInfoCtrl.do?user_id=${row.user_id }" >
-									${row.user_id }
-									</a>
-								</td>
-								<td>${row.comment_rating }</td>
-								<td class="text-left">
-									${row.comment_com }
-								</td>
-								<td>
-								<button class="btn btn-danger"
-								       onclick="location.href='./CommentDelete.do?comment_idx=${row.comment_idx}&organ_idx=${row.organ_idx }';">삭제</button>
-								</td>
-							</tr>
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
-            </table>
+            
             <div style="text-align: right;">
             	<button class="btn btn-warning" type="button" style="color: white;"
             		onclick="location.href='./SanatoriumListCtrl.do';">시설 리스트 가기</button>

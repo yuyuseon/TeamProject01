@@ -33,6 +33,16 @@ if(request.getAttribute("Modified")!=null){
 	alert("설정이 변경되었습니다.");
 </script>
 <%} %>
+
+<%
+if(request.getAttribute("INSERT")!=null){
+%>
+
+	<script>
+		alert("신규등록이 완료되었습니다.");
+	</script>
+	
+<%} %>
 	
 
 <body id="page-top">
@@ -57,16 +67,15 @@ if(request.getAttribute("Modified")!=null){
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-          	회원리스트
-          	
-          	<form action="./SanatoriumInsertCtrl.do">
-	          	<select class="form-control" name="new" id="new" 
-	          		style="width: 150px; height: 40px">
-	          		<option value="요양병원">요양병원</option>
+          	 시설 리스트
+          	<form action="./SanatoriumInsert1Ctrl.do" >
+	          	<select name="new" id="new" 
+	          		style="width: 150px; height: 40px; border-radius:4px; padding: 1px;">
+	          		<option value="요양병원">요양병원</option> 
 	          		<option value="요양원">요양원</option>
 	          		<option value="방문시설">방문시설</option>
 	          	</select>
-	          	<button type="submit" class="btn btn-success" >신규 등록</button>
+	          	<button type="submit" class="btn btn-success" style="padding: 5px;">신규 등록</button>
 	          	
           	</form>
           	
@@ -84,15 +93,6 @@ if(request.getAttribute("Modified")!=null){
                     
                   </tr>
                 </thead>
-                <!-- <tfoot>
-                  <tr>
-                    <th>이름</th>
-                    <th>주소</th>
-                    <th>등급</th>
-                    <th>타입</th>
-                    <th>노출여부</th>
-                  </tr>
-                </tfoot> -->
                 <tbody>
                   <c:choose>
 					<c:when test="${empty lists }">

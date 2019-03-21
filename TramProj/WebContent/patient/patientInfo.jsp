@@ -49,7 +49,7 @@ if(request.getAttribute("RESULT")!=null){
 		request.removeAttribute("RESULT");
 %>
 	<script>
-		alert("변경 성공");
+		alert("정보 변경에 성공하였습니다.");
 	</script>
 	
 <% 	}else{

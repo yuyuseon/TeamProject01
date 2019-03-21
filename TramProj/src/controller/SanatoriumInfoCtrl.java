@@ -40,7 +40,7 @@ public class SanatoriumInfoCtrl extends HttpServlet{
 			path="/sanatorium/sanatoriumInfo2.jsp";
 		}
 		else {
-			dto = dao.reference2Info(organ_idx);
+			dto = dao.reference3Info(organ_idx);
 			path="/sanatorium/sanatoriumInfo2.jsp";
 		}
 		
