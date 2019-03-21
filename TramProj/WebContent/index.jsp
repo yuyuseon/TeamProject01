@@ -1,21 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Admin</title>
+<script>
+	//í•´ë‹¹ íŒŒì¼ ë¡œë”© ì‹œ ì•„ë˜ ìš”ì²­ëª…ìœ¼ë¡œ ë°”ë¡œ ì´ë™
+	location.href="./MainCtrl.do";
+</script>
+<%if(session.getAttribute("TYPE")!=null){
+	System.out.print(session.getAttribute("TYPE"));%>
+	
+	<%if(!session.getAttribute("TYPE").toString().equals("í˜ì´ì§€ê´€ë¦¬ì")){  %>
+		<script type="text/javascript">
+		
+		window.history.forward();
+		
+		function noBack() {
+		
+			window.history.forward();
+		
+		}
+		
+		</script>
+	<%} %>
+<%} %>
 </head>
 <body>
-	<ul>
-		<li>ÇĞ¿ø¿¡¼­ ¸¸µç indexÆÄÀÏ</li>
-		<li>ÆÄÀÏ ¼öÁ¤:KOSMO</li>
-		<li>
-			<%
-				DTO dto =new DTO("È«±æµ¿");
-				out.println(dto.getName());
-			%>
-		</li>
-	</ul>
+
 </body>
-</html>
+</html>   
