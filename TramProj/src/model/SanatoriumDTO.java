@@ -35,7 +35,7 @@ public class SanatoriumDTO {
 	private int organ_patnum;
 	private int organ_docnum;
 	private int organ_nurnum;
-	private int organ_staffNum;
+	private int organ_staffnum;
 	private String organ_disease;
 	private String organ_life;
 	private String organ_eval;
@@ -50,7 +50,7 @@ public class SanatoriumDTO {
 			String organ_nonpaysnack, String organ_nonpayhaircut, String organ_park, String organ_loc,
 			String organ_view, String organ_fund, String organ_care, String organ_loca, String organ_reli,
 			String organ_call, int organ_pay, String organ_subject, String organ_time, String organ_ref,
-			int organ_patnum, int organ_docnum, int organ_nurnum, int organ_staffNum, String organ_disease,
+			int organ_patnum, int organ_docnum, int organ_nurnum, int organ_staffnum, String organ_disease,
 			String organ_life, String organ_eval, String user_id, String organ_comment) {
 		super();
 		this.organ_idx = organ_idx;
@@ -84,7 +84,7 @@ public class SanatoriumDTO {
 		this.organ_patnum = organ_patnum;
 		this.organ_docnum = organ_docnum;
 		this.organ_nurnum = organ_nurnum;
-		this.organ_staffNum = organ_staffNum;
+		this.organ_staffnum = organ_staffnum;
 		this.organ_disease = organ_disease;
 		this.organ_life = organ_life;
 		this.organ_eval = organ_eval;
@@ -277,11 +277,11 @@ public class SanatoriumDTO {
 	public void setOrgan_nurnum(int organ_nurnum) {
 		this.organ_nurnum = organ_nurnum;
 	}
-	public int getOrgan_staffNum() {
-		return organ_staffNum;
+	public int getOrgan_staffnum() {
+		return organ_staffnum;
 	}
-	public void setOrgan_staffNum(int organ_staffNum) {
-		this.organ_staffNum = organ_staffNum;
+	public void setOrgan_staffnum(int organ_staffnum) {
+		this.organ_staffnum = organ_staffnum;
 	}
 	public String getOrgan_disease() {
 		return organ_disease;
@@ -313,6 +313,7 @@ public class SanatoriumDTO {
 	public void setOrgan_comment(String organ_comment) {
 		this.organ_comment = organ_comment;
 	}
+	
 	
 	
 }

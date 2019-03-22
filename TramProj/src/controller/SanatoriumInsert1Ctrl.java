@@ -73,23 +73,17 @@ public class SanatoriumInsert1Ctrl extends HttpServlet {
 			String organ_disease3 = req.getParameter("organ_disease3");
 			String organ_disease = organ_disease1 + "," + organ_disease2 + "," + organ_disease3;
 		
-			int organ_life1 = Integer.parseInt(req.getParameter("organ_life1"))
-					/ Integer.parseInt(req.getParameter("organ_patnum"));
-			int organ_life2 = Integer.parseInt(req.getParameter("organ_life2"))
-					/ Integer.parseInt(req.getParameter("organ_patnum"));
-			int organ_life3 = Integer.parseInt(req.getParameter("organ_life3"))
-					/ Integer.parseInt(req.getParameter("organ_patnum"));
+			int organ_life1 = Integer.parseInt(req.getParameter("organ_life1"));
+			int organ_life2 = Integer.parseInt(req.getParameter("organ_life2"));
+			int organ_life3 = Integer.parseInt(req.getParameter("organ_life3"));
 		
-			String organ_life = organ_life1 + "%," + organ_life2 + "%," + organ_life3 + "%";
+			String organ_life = organ_life1 + "," + organ_life2 + "," + organ_life3 + "";
 		
-			int organ_eval1 = Integer.parseInt(req.getParameter("organ_eval1"))
-					/ Integer.parseInt(req.getParameter("organ_patnum"));
-			int organ_eval2 = Integer.parseInt(req.getParameter("organ_eval2"))
-					/ Integer.parseInt(req.getParameter("organ_patnum"));
-			int organ_eval3 = Integer.parseInt(req.getParameter("organ_eval3"))
-					/ Integer.parseInt(req.getParameter("organ_patnum"));
+			int organ_eval1 = Integer.parseInt(req.getParameter("organ_eval1"));
+			int organ_eval2 = Integer.parseInt(req.getParameter("organ_eval2"));
+			int organ_eval3 = Integer.parseInt(req.getParameter("organ_eval3"));
 		
-			String organ_eval = organ_eval1 + "%," + organ_eval2 + "%," + organ_eval3 + "%";
+			String organ_eval = organ_eval1 + "," + organ_eval2 + "," + organ_eval3 + "";
 		
 			String organ_time = "";
 		
@@ -98,7 +92,7 @@ public class SanatoriumInsert1Ctrl extends HttpServlet {
 				organ_time += "~";
 				organ_time += req.getParameter("organ_time12");
 				organ_time += ",";
-		
+				System.out.println(organ_time);
 			} else {
 				organ_time += "없음,";
 			}
@@ -122,45 +116,47 @@ public class SanatoriumInsert1Ctrl extends HttpServlet {
 			}
 		
 			if (req.getParameter("organ_timeCheck4") == null) {
-				organ_time += "없음,";
-			} else {
 				organ_time += req.getParameter("organ_time41");
 				organ_time += "~";
 				organ_time += req.getParameter("organ_time42");
 				organ_time += ",";
+			} else {
+				organ_time += "없음,";
 			}
 			if (req.getParameter("organ_timeCheck5") == null) {
-				organ_time += "없음,";
-			} else {
 				organ_time += req.getParameter("organ_time51");
 				organ_time += "~";
 				organ_time += req.getParameter("organ_time52");
 				organ_time += ",";
+			} else {
+				organ_time += "없음,";
 			}
 			if (req.getParameter("organ_timeCheck6") == null) {
-				organ_time += "없음,";
-			} else {
 				organ_time += req.getParameter("organ_time61");
 				organ_time += "~";
 				organ_time += req.getParameter("organ_time62");
 				organ_time += ",";
+			} else {
+				organ_time += "없음,";
 			}
 			if (req.getParameter("organ_timeCheck7") == null) {
-				organ_time += "없음,";
-			} else {
 				organ_time += req.getParameter("organ_time71");
 				organ_time += "~";
 				organ_time += req.getParameter("organ_time72");
 				organ_time += ",";
+			} else {
+				organ_time += "없음,";
 			}
 			if (req.getParameter("organ_timeCheck8") == null) {
-				organ_time += "없음";
-			} else {
 				organ_time += req.getParameter("organ_time81");
 				organ_time += "~";
 				organ_time += req.getParameter("organ_time82");
+			} else {
+				organ_time += "없음";
 			}
-		
+			System.out.println("최종"+organ_time);
+			
+			
 			// 서블릿에서 application내장객체를 가져옴
 			ServletContext application = this.getServletContext();
 			// DAO객체 생성 및 DB연결
@@ -183,7 +179,7 @@ public class SanatoriumInsert1Ctrl extends HttpServlet {
 			dto.setOrgan_patnum(Integer.parseInt(organ_patnum));
 			dto.setOrgan_docnum(Integer.parseInt(organ_docnum));
 			dto.setOrgan_nurnum(Integer.parseInt(organ_nurnum));
-			dto.setOrgan_staffNum(Integer.parseInt(organ_staffnum));
+			dto.setOrgan_staffnum(Integer.parseInt(organ_staffnum));
 			dto.setOrgan_disease(organ_disease);
 			dto.setOrgan_life(organ_life);
 			dto.setOrgan_eval(organ_eval);

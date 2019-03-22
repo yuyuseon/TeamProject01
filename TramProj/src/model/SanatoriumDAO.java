@@ -184,11 +184,14 @@ public class SanatoriumDAO {
 				dto.setOrgan_patnum(rs.getInt("organ_patnum"));
 				dto.setOrgan_docnum(rs.getInt("organ_docnum"));
 				dto.setOrgan_nurnum(rs.getInt("organ_nurnum"));
-				dto.setOrgan_staffNum(rs.getInt("organ_staffnum"));
+				dto.setOrgan_staffnum(rs.getInt("organ_staffnum"));
 				dto.setOrgan_disease(rs.getString("organ_disease"));
 				dto.setOrgan_life(rs.getString("organ_life"));
 				dto.setOrgan_eval(rs.getString("organ_eval"));
 				dto.setOrgan_idx(rs.getString("organ_idx"));
+				dto.setOrgan_view(rs.getString("organ_view"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setOrgan_comment(rs.getString("organ_comment"));
 				
 				
 				
@@ -680,7 +683,7 @@ public class SanatoriumDAO {
 			psmt.setInt(13, dto.getOrgan_patnum());
 			psmt.setInt(14, dto.getOrgan_docnum());
 			psmt.setInt(15, dto.getOrgan_nurnum());
-			psmt.setInt(16, dto.getOrgan_staffNum());
+			psmt.setInt(16, dto.getOrgan_staffnum());
 			psmt.setString(17, dto.getOrgan_disease());
 			psmt.setString(18, dto.getOrgan_life());
 			psmt.setString(19, dto.getOrgan_eval());

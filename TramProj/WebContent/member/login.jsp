@@ -74,7 +74,7 @@ if(request.getAttribute("RESULT")!=null){
           <button type="submit" class="btn btn-primary btn-block">Login</button>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="A01Register.jsp">회원 가입</a>
+          <a class="d-block small mt-3" href="./member/register.jsp">회원 가입</a>
         </div>
       </div>
     </div>

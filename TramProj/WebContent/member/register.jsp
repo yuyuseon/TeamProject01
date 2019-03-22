@@ -58,7 +58,7 @@
 			pass2.focus(); 
 			return false; 
 		}
-		else if(pass1.value.length>20 || pass1.value.length<6){ 
+		else if(pass1.value.length>12 || pass1.value.length<8){ 
 			alert('비밀번호는 6~20자로 입력해주세요.'); 
 			pass1.focus(); 
 			return false; 
@@ -132,10 +132,10 @@
   <title>Admin - 회원가입</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="../css/sb-admin.css" rel="stylesheet">
 
 </head>
 
@@ -214,11 +214,11 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
 </body>
 

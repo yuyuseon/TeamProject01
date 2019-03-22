@@ -170,7 +170,7 @@ if(request.getAttribute("RESULT")!=null){
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-          	${sanatoriumInfo.organ_name } 시설 정보
+          	[${sanatoriumInfo.organ_name }] 시설 상세 정보
           </div>
           <div class="card-body">
             <div class="table-responsive">

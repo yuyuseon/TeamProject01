@@ -128,6 +128,8 @@ if(request.getAttribute("RESULT")!=null){
 } %>
 
 
+
+
 <body id="page-top">
 
 	<div>
@@ -149,7 +151,7 @@ if(request.getAttribute("RESULT")!=null){
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-          	병원 시설 정보 입력
+          	[${sanatoriumInfo.organ_name}] 시설 상세 정보
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -163,7 +165,10 @@ if(request.getAttribute("RESULT")!=null){
               <tr>
               	<th>시설 관리자 계정</th>
               	<th colspan="2">
-	              	<input type="text" class="form-control" name="user_id" value=""/>
+	              	<a href="./MemberInfoCtrl.do?user_id=${sanatoriumInfo.user_id }" >
+					${sanatoriumInfo.user_id }
+					</a>
+					<input type="text" class="form-control" name="user_id" value="${sanatoriumInfo.user_id }" />
               	</th>
               </tr>
               <tr>
@@ -171,27 +176,28 @@ if(request.getAttribute("RESULT")!=null){
               	<th>등급</th>
               </tr>
               <tr>
-              	<td colspan="2"><input type="text" class="form-control" name="organ_name" value="" /> </td>
-              	<td><select name="organ_grade" class="form-control" >
-						<option value="정보없음">정보없음</option>
-						<option value="1등급">1등급</option>
-						<option value="2등급">2등급</option>
-						<option value="3등급">3등급</option>
+              	<td colspan="2"><input type="text" class="form-control" name="organ_name" value="${sanatoriumInfo.organ_name}" /> </td>
+              	<td>
+              		<c:set var="organ_grade" value="${sanatoriumInfo.organ_grade }"/>
+              		<select name="organ_grade" class="form-control" >
+						<option value="정보없음" <c:if test="${organ_grade eq '정보없음'}"> selected</c:if>>정보없음</option>
+						<option value="1등급" <c:if test="${organ_grade eq '1등급'}"> selected</c:if>>1등급</option>
+						<option value="2등급" <c:if test="${organ_grade eq '2등급'}"> selected</c:if>>2등급</option>
+						<option value="3등급" <c:if test="${organ_grade eq '3등급'}"> selected</c:if>>3등급</option>
 					</select> 
 				</td>
               </tr>
-              
               <tr>
               	<th colspan="3">주소</th>
               </tr>
               <tr>
                 <td colspan="3" >
-                
+                	<input type="text" value="${sanatoriumInfo.organ_address}" class="form-control" readonly="readonly"/>
                 	<select id="address1" name="address1" class="" style="width: 130px; height:40px; border-radius:4px;" ></select>	
 					<select id="address2" name="address2" class="" style="width: 100px; height:40px; border-radius:4px;"></select>
 					<select id="address3" name="address3" class="" style="width: 100px; height:40px; border-radius:4px;"></select>
 					<input type="text" id="address4" name="address4" class="form-control" placeholder="상세주소" style="width: 400px;"/>
-                	<input type="hidden" name="organ_address" id="organ_address"/>
+                	<input type="hidden" name="organ_address" id="organ_address" value="${sanatoriumInfo.organ_address}"/>
                 </td>
               </tr>
               
@@ -201,21 +207,23 @@ if(request.getAttribute("RESULT")!=null){
               	<th>전화번호</th>
               </tr>
               <tr>
-	            <td><select name="organ_fund" class="form-control" >
-						<option value="정보없음">정보없음</option>
-						<option value="개인">개인</option>
-						<option value="단체">단체</option>
-						<option value="공공기관">공공기관</option>			
-						<option value="기타">기타</option>			
+	            <td>
+	            	<c:set var="organ_fund" value="${sanatoriumInfo.organ_fund }"/>
+	            	<select name="organ_fund" class="form-control" >
+						<option value="정보없음" <c:if test="${organ_fund eq '정보없음'}"> selected</c:if>>정보없음</option>
+						<option value="개인" <c:if test="${organ_fund eq '개인'}"> selected</c:if>>개인</option>
+						<option value="단체" <c:if test="${organ_fund eq '단체'}"> selected</c:if>>단체</option>
+						<option value="공공기관" <c:if test="${organ_fund eq '공공기관'}"> selected</c:if>>공공기관</option>			
+						<option value="기타" <c:if test="${organ_fund eq '기타'}"> selected</c:if>>기타</option>			
 					</select>
 				</td>
 	            <td>
 		            <div class="form-group">
-				      <input type="date" class="form-control" id="usr" name="organ_fund">
+				      <input type="date" class="form-control" id="usr" name="organ_fund" value="${sanatoriumInfo.organ_fund}">
 				    </div>
 	            </td>
 	            <td>
-	            	<input type="text" class="form-control" name="organ_call" value=""/>
+	            	<input type="text" class="form-control" name="organ_call" value="${sanatoriumInfo.organ_call}"/>
 	            </td>
               </tr>
               
@@ -225,28 +233,32 @@ if(request.getAttribute("RESULT")!=null){
               	<th>종교활동</th>
               </tr>
               <tr>
-	            <td><select name="organ_care" class="form-control" >
-						<option value="정보없음">정보없음</option>
-						<option value="개별간병">개별간병</option>
-						<option value="공동간병">공동간병</option>			
-						<option value="기타">기타</option>
+	            <td>
+	            	<c:set var="organ_care" value="${sanatoriumInfo.organ_care }"/>
+	            	<select name="organ_care" class="form-control" >
+						<option value="정보없음" <c:if test="${organ_care eq '정보없음'}"> selected</c:if>>정보없음</option>
+						<option value="개별간병" <c:if test="${organ_care eq '개별간병'}"> selected</c:if>>개별간병</option>
+						<option value="공동간병" <c:if test="${organ_care eq '공동간병'}"> selected</c:if>>공동간병</option>			
+						<option value="기타" <c:if test="${organ_care eq '기타'}"> selected</c:if>>기타</option>
 					</select>
 				</td>
 	            <td>
+	            	<c:set var="organ_loca" value="${sanatoriumInfo.organ_loca }"/>
 		            <select name="organ_loca" class="form-control" >
-						<option value="정보없음">정보없음</option>
-						<option value="단독건물">단독건물</option>
-						<option value="상가건물">상가건물</option>			
-						<option value="기타">기타</option>
+						<option value="정보없음" <c:if test="${organ_loca eq '정보없음'}"> selected</c:if>>정보없음</option>
+						<option value="단독건물" <c:if test="${organ_loca eq '단독건물'}"> selected</c:if>>단독건물</option>
+						<option value="상가건물" <c:if test="${organ_loca eq '상가건물'}"> selected</c:if>>상가건물</option>			
+						<option value="기타" <c:if test="${organ_loca eq '기타'}"> selected</c:if>>기타</option>
 					</select>
 	            </td>
 	            <td>
+	            	<c:set var="organ_reli" value="${sanatoriumInfo.organ_reli }"/>
 	            	<select name="organ_reli" class="form-control" >
-						<option value="정보없음">정보없음</option>
-						<option value="천주교">천주교</option>
-						<option value="기독교">기독교</option>
-						<option value="불교">불교</option>			
-						<option value="기타">기타</option>
+						<option value="정보없음" <c:if test="${organ_reli eq '정보없음'}"> selected</c:if>>정보없음</option>
+						<option value="천주교" <c:if test="${organ_reli eq '천주교'}"> selected</c:if>>천주교</option>
+						<option value="기독교" <c:if test="${organ_reli eq '기독교'}"> selected</c:if>>기독교</option>
+						<option value="불교" <c:if test="${organ_reli eq '불교'}"> selected</c:if>>불교</option>			
+						<option value="기타" <c:if test="${organ_reli eq '기타'}"> selected</c:if>>기타</option>
 					</select>
 	            </td>
               </tr>
@@ -257,10 +269,10 @@ if(request.getAttribute("RESULT")!=null){
               </tr>
               <tr>
 	            <td>
-	            	<input type="number" class="form-control" name="organ_pay" value="0"/>
+	            	<input type="number" class="form-control" name="organ_pay" value="${sanatoriumInfo.organ_pay}"/>
 				</td>
 	            <td colspan="2">
-		            <input type="text" class="form-control" name="organ_subject" placeholder="내과(2), 외과(1)"/>
+		            <input type="text" class="form-control" name="organ_subject" value="${sanatoriumInfo.organ_subject}" placeholder="내과(2), 외과(1)"/>
 	            </td>
 	            
               </tr>
@@ -271,7 +283,7 @@ if(request.getAttribute("RESULT")!=null){
               <tr>
 	            
 	            <td colspan="3">
-	            	<input type="text" class="form-control" name="organ_ref" placeholder="물리치료실(7),일반병상(196)"/>
+	            	<input type="text" class="form-control" name="organ_ref" value="${sanatoriumInfo.organ_ref}" placeholder="물리치료실(7),일반병상(196)"/>
 	            </td>
               </tr>
               
@@ -282,13 +294,13 @@ if(request.getAttribute("RESULT")!=null){
               </tr>
               <tr>
 	            <td>
-	            	<input type="number" class="form-control" name="organ_patnum" min="0" value="0"/>
+	            	<input type="number" class="form-control" name="organ_patnum" min="0" value="${sanatoriumInfo.organ_patnum}"/>
 				</td>
 	            <td>
-	            	<input type="number" class="form-control" name="organ_docnum" min="0" value="0"/>
+	            	<input type="number" class="form-control" name="organ_docnum" min="0" value="${sanatoriumInfo.organ_docnum}"/>
 				</td>
 				<td>
-	            	<input type="number" class="form-control" name="organ_nurnum" min="0" value="0"/>
+	            	<input type="number" class="form-control" name="organ_nurnum" min="0" value="${sanatoriumInfo.organ_nurnum}"/>
 				</td>
               </tr>
               
@@ -298,12 +310,12 @@ if(request.getAttribute("RESULT")!=null){
               </tr>
               <tr>
 	            <td>
-	            	<input type="number" class="form-control" name="organ_staffnum" min="0" value="0"/>
+	            	<input type="number" class="form-control" name="organ_staffnum" min="0" value="${sanatoriumInfo.organ_staffnum}"/>
 				</td>
 	            <td colspan="2">
-	            	<input type="text" style="width: 130px; border-radius:4px;" name="organ_disease1" placeholder="1순위" />
-					<input type="text" style="width: 130px; border-radius:4px;" name="organ_disease2" placeholder="2순위" />
-					<input type="text" style="width: 130px; border-radius:4px;" name="organ_disease3" placeholder="3순위" />
+	            	<input type="text" value="${organ_disease1}" style="width: 130px; border-radius:4px;" name="organ_disease1" placeholder="1순위" />
+					<input type="text" value="${organ_disease2}" style="width: 130px; border-radius:4px;" name="organ_disease2" placeholder="2순위" />
+					<input type="text" value="${organ_disease3}" style="width: 130px; border-radius:4px;" name="organ_disease3" placeholder="3순위" />
 				</td>
               </tr>
               <tr>
@@ -312,13 +324,13 @@ if(request.getAttribute("RESULT")!=null){
               <tr>
 	            <td colspan="3">
 		        	<input type="text" style="width: 250px; border-radius:4px;" value="스스로 가능(명)" readonly/>
-		        	<input type="number" style="width: 100px; border-radius:4px;" name="organ_life1" min="0" max="100" value="0" />
+		        	<input type="number" style="width: 100px; border-radius:4px;" name="organ_life1" min="0" max="100" value="${organ_life1}" />
 					<br />
 					<input type="text" style="width: 250px; border-radius:4px;" value="타인의 도움 필요(명)" readonly/>
-					<input type="number" style="width: 100px; border-radius:4px;" name="organ_life2" min="0" max="100" value="0" />
+					<input type="number" style="width: 100px; border-radius:4px;" name="organ_life2" min="0" max="100" value="${organ_life2}" />
 					<br />
 					<input type="text" style="width: 250px; border-radius:4px;" value="타인의 도움 전적으로 필요(명)" readonly/>
-					<input type="number" style="width: 100px; border-radius:4px;" name="organ_life3" min="0" max="100" value="0" />
+					<input type="number" style="width: 100px; border-radius:4px;" name="organ_life3" min="0" max="100" value="${organ_life3}" />
 				</td>
               </tr>
               <tr>
@@ -327,15 +339,16 @@ if(request.getAttribute("RESULT")!=null){
               <tr>
 	            <td colspan="3">
 		        	<input type="text" style="width: 250px; border-radius:4px;" value="욕창발생(명)" readonly/>
-		        	<input type="number" style="width: 100px; border-radius:4px;" name="organ_eval1" min="0" max="100" value="0" />
+		        	<input type="number" style="width: 100px; border-radius:4px;" name="organ_eval1" min="0" max="100" value="${organ_eval1}" />
 					<br />
 					<input type="text" style="width: 250px; border-radius:4px;" value="욕창감소(명)" readonly/>
-					<input type="number" style="width: 100px; border-radius:4px;" name="organ_eval2" min="0" max="100" value="0" />
+					<input type="number" style="width: 100px; border-radius:4px;" name="organ_eval2" min="0" max="100" value="${organ_eval2}" />
 					<br />
 					<input type="text" style="width: 250px; border-radius:4px;" value="욕창악화(명)" readonly/>
-					<input type="number" style="width: 100px; border-radius:4px;" name="organ_eval3" min="0" max="100" value="0" />
+					<input type="number" style="width: 100px; border-radius:4px;" name="organ_eval3" min="0" max="100" value="${organ_eval3}" />
 				</td>
               </tr>
+              
               
               <tr>
               	<th colspan="3">진료시간</th>
@@ -346,66 +359,66 @@ if(request.getAttribute("RESULT")!=null){
                 <td colspan="3">
 					<input type="text" class="form-control" value="평일 점심시간" readonly="readonly"/> 
 					<br /><text style="margin-left:10px;">없음</text>
-					<input type="checkbox"  name="organ_timeCheck1" value="1" >
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time11" />
+					<input type="checkbox"  name="organ_timeCheck1" value="1" <c:if test="${organ_time11 eq ''}"> checked="checked" </c:if>>
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time11" value="${organ_time11}" />
 					<text>~</text>
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time12" />
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time12" value="${organ_time12}" />
 					
 					<br /><br />
-					<input type="text" class="form-control" value="평일 진료시간" readonly="readonly"/>
+					<input type="text" class="form-control" value="평일 진료시간" readonly="readonly" />
 					<br /><text style="margin-left:10px;">없음</text>
-					<input type="checkbox" name="organ_timeCheck2" value="1">
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time21" />
+					<input type="checkbox" name="organ_timeCheck2" value="1" <c:if test="${organ_time21 eq ''}"> checked="checked" </c:if>>
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time21" value="${organ_time21}" />
 					<text>~</text>
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time22" />
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time22" value="${organ_time22}" />
 					
 					<br /><br />
 					<input type="text" class="form-control" value="토요일 점심시간" readonly="readonly"/>
 					<br /><text style="margin-left:10px;">없음</text>
-					<input type="checkbox" name="organ_timeCheck3" value="1">
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time31" />
+					<input type="checkbox" name="organ_timeCheck3" value="1" <c:if test="${organ_time31 eq ''}"> checked="checked" </c:if>>
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time31" value="${organ_time31}" />
 					<text>~</text>
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time32" />
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time32" value="${organ_time32}" />
 					
 					<br /><br />
 					<input type="text" class="form-control" value="토요일 진료시간" readonly="readonly"/>
 					<br /><text style="margin-left:10px;">없음</text>
-					<input type="checkbox" name="organ_timeCheck4" value="1">
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time41" />
+					<input type="checkbox" name="organ_timeCheck4" value="1" <c:if test="${organ_time41 eq ''}"> checked="checked" </c:if>>
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time41" value="${organ_time41}" />
 					<text>~</text>
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time42" />
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time42" value="${organ_time42}" />
 					
 					<br /><br />
 					<input type="text" class="form-control" value="일요일 점심시간" readonly="readonly"/>
 					<br /><text style="margin-left:10px;">없음</text>
-					<input type="checkbox" name="organ_timeCheck5" value="1">
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time51" />
+					<input type="checkbox" name="organ_timeCheck5" value="1" <c:if test="${organ_time51 eq ''}"> checked="checked" </c:if>>
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time51" value="${organ_time51}" />
 					<text>~</text>
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time52" />
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time52" value="${organ_time52}" />
 					
 					<br /><br />
 					<input type="text" class="form-control" value="일요일 진료시간" readonly="readonly"/>
 					<br /><text style="margin-left:10px;">없음</text>
-					<input type="checkbox" name="organ_timeCheck6" value="1">
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time61" />
+					<input type="checkbox" name="organ_timeCheck6" value="1" <c:if test="${organ_time61 eq ''}"> checked="checked" </c:if>>
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time61" value="${organ_time61}" />
 					<text>~</text>
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time62" />
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time62" value="${organ_time62}" />
 					
 					<br /><br />		
 					<input type="text" class="form-control" value="공휴일 점심시간" readonly="readonly"/>
 					<br /><text style="margin-left:10px;">없음</text>
-					<input type="checkbox" name="organ_timeCheck7" value="1">
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time71" />
+					<input type="checkbox" name="organ_timeCheck7" value="1" <c:if test="${organ_time71 eq ''}"> checked="checked" </c:if>>
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time71" value="${organ_time71}" />
 					<text>~</text>
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time72" />
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time72" value="${organ_time72}" />
 					
 					<br /><br />
 					<input type="text" class="form-control" value="공휴일 진료시간" readonly="readonly"/>
 					<br /><text style="margin-left:10px;">없음</text>
-					<input type="checkbox" name="organ_timeCheck8" value="1">
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time81" />
+					<input type="checkbox" name="organ_timeCheck8" value="1" <c:if test="${organ_time81 eq ''}"> checked="checked" </c:if>>
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time81" value="${organ_time81}" />
 					<text>~</text>
-					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time82" />
+					<input type="time" style="width: 130px; border-radius:4px;" name="organ_time82" value="${organ_time82}" />
 					
 					<br /><br />
 					
@@ -418,7 +431,7 @@ if(request.getAttribute("RESULT")!=null){
               </tr>
               <tr>
               	<td colspan="3">
-              		<input type="text" name="organ_comment" class="form-control" value=""/>
+              		<input type="text" name="organ_comment" class="form-control" value="${sanatoriumInfo.organ_comment}"/>
               	</td>
               </tr>
               <tr>
@@ -429,7 +442,7 @@ if(request.getAttribute("RESULT")!=null){
               </tr>
             </table>
             <div style="text-align: right;">
-            <button class="btn btn-info" type="submit" style="color: white;">등록</button>
+            <button class="btn btn-danger" type="submit" style="color: white;">수정하기</button>
             </div>
             </form>
             </div>

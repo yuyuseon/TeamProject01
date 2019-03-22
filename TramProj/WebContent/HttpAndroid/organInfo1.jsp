@@ -48,7 +48,7 @@ jsonObject.put("organ_ref", m.getOrgan_ref());
 int patnum = m.getOrgan_patnum();
 int docnum = m.getOrgan_docnum();
 int nurnum = m.getOrgan_nurnum();
-int staffnum = m.getOrgan_staffNum();
+int staffnum = m.getOrgan_staffnum();
 double organ_docnum = patnum/docnum;
 double organ_nurnum = patnum/nurnum;
 double organ_staffnum = patnum/staffnum;
