@@ -12,14 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.MemberListDAO;
-import model.PatientDAO;
-import model.PatientDTO;
+
 import model.SanatoriumDAO;
 import model.SanatoriumDTO;
 
-@WebServlet("/SanatoriumUpdateCtrl.do")
-public class SanatoriumUpdateCtrl extends HttpServlet {
+@WebServlet("/Sanatorium2UpdateCtrl.do")
+public class Sanatorium2UpdateCtrl extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

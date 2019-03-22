@@ -177,7 +177,7 @@ if(request.getAttribute("RESULT")!=null){
             <form
 			name="writeFrm"
 			method="post"
-			action="./SanatoriumUpdateCtrl.do"
+			action="./Sanatorium2UpdateCtrl.do"
 			onsubmit="return frmValidata(this);"
 			>
               <table class="table table-bordered">

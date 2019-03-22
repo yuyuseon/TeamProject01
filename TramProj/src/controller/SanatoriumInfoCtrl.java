@@ -126,7 +126,7 @@ public class SanatoriumInfoCtrl extends HttpServlet {
 			
 			for (int i = 0; i < text.size(); i++) {
 				String organ_timeStr = text.get(i);
-				System.out.println("organ_timeStr:"+organ_timeStr);
+				//System.out.println("organ_timeStr:"+organ_timeStr);
 				if(organ_timeStr.equals("없음")) {
 					for(int j = 1; j <=2; j++) {
 						if(j==1) {
@@ -140,17 +140,17 @@ public class SanatoriumInfoCtrl extends HttpServlet {
 					int su;
 					su = organ_timeStr.indexOf("~");
 					re = organ_timeStr.substring(0, su);
-					System.out.println("///"+re);
+					//System.out.println("///"+re);
 					organ_timeStr = organ_timeStr.substring(su + 1);
-					System.out.println("///"+organ_timeStr);
+					//System.out.println("///"+organ_timeStr);
 					for(int j = 1; j <=2; j++) {
 						if(j==1) {
 							req.setAttribute("organ_time" + (i + 1)+j, re );
-							System.out.println((i + 1)+""+j +"/" + re );
+							//System.out.println((i + 1)+""+j +"/" + re );
 						}
 						else {
 							req.setAttribute("organ_time" + (i + 1)+j, organ_timeStr );
-							System.out.println((i + 1)+""+j +"/" + re );
+							//System.out.println((i + 1)+""+j +"/" + re );
 						}
 					}
 				}

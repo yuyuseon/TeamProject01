@@ -157,9 +157,7 @@ public class SanatoriumDAO {
 			query+=" WHERE organ_idx = '"+ organ_idx +"' ";
 		}
 		
-		
-		
-		
+			
 		try {
 			psmt = con.prepareStatement(query);
 			rs = psmt.executeQuery();
@@ -840,7 +838,51 @@ public class SanatoriumDAO {
 	}
 	
 	
-	
+	//요양병원 정보 업데이트
+	public int reference1update(SanatoriumDTO dto) {
+		int	affecter = 0;
+		try {
+			
+			String sql = "UPDATE organ_reference_1 SET" 
+					+ " ORGAN_NAME=?,ORGAN_ADDRESS=?,ORGAN_GRADE=?,ORGAN_FUND=?,ORGAN_CARE=?, "
+					+ "	ORGAN_LOCA=?,ORGAN_RELI=?,ORGAN_CALL=?,ORGAN_PAY=?,ORGAN_SUBJECT=?,ORGAN_TIME=?, " 
+					+ "	ORGAN_REF=?,ORGAN_PATNUM=?,ORGAN_DOCNUM=?,ORGAN_NURNUM=?,ORGAN_STAFFNUM=?,ORGAN_DISEASE=?, " 
+					+ "	ORGAN_LIFE=?,ORGAN_EVAL=?,ORGAN_VIEW=?,USER_ID=?,ORGAN_COMMENT=? "
+					+ " WHERE organ_idx=?";
+			
+			psmt = con.prepareStatement(sql);
+			
+			psmt.setString(1, dto.getOrgan_name());
+			psmt.setString(2, dto.getOrgan_address());
+			psmt.setString(3, dto.getOrgan_grade());
+			psmt.setString(4, dto.getOrgan_fund());
+			psmt.setString(5, dto.getOrgan_care());
+			psmt.setString(6, dto.getOrgan_loca());
+			psmt.setString(7, dto.getOrgan_reli());
+			psmt.setString(8, dto.getOrgan_call());
+			psmt.setInt(9, dto.getOrgan_pay());
+			psmt.setString(10, dto.getOrgan_subject());
+			psmt.setString(11, dto.getOrgan_time());
+			psmt.setString(12, dto.getOrgan_ref());
+			psmt.setInt(13, dto.getOrgan_patnum());
+			psmt.setInt(14, dto.getOrgan_docnum());
+			psmt.setInt(15, dto.getOrgan_nurnum());
+			psmt.setInt(16, dto.getOrgan_staffnum());
+			psmt.setString(17, dto.getOrgan_disease());
+			psmt.setString(18, dto.getOrgan_life());
+			psmt.setString(19, dto.getOrgan_eval());
+			psmt.setString(20, dto.getOrgan_view());
+			psmt.setString(21, dto.getUser_id());
+			psmt.setString(22, dto.getOrgan_comment());
+			
+			psmt.setString(23, dto.getOrgan_idx());
+			affecter = psmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return affecter;
+	}
 	
 	
 	//요양원 정보 업데이트

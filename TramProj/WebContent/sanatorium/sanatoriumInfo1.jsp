@@ -158,9 +158,10 @@ if(request.getAttribute("RESULT")!=null){
             <form
 			name="writeFrm"
 			method="post"
-			action="./SanatoriumInsert1Ctrl.do"
+			action="./Sanatorium1UpdateCtrl.do"
 			onsubmit="return frmValidata(this);"
 			>
+			<input type="hidden" name="organ_idx" value="${sanatoriumInfo.organ_idx }" />
             <table class="table table-bordered">
               <tr>
               	<th>시설 관리자 계정</th>
@@ -433,6 +434,16 @@ if(request.getAttribute("RESULT")!=null){
               	<td colspan="3">
               		<input type="text" name="organ_comment" class="form-control" value="${sanatoriumInfo.organ_comment}"/>
               	</td>
+              </tr>
+              <tr>
+              	<th>노출여부</th>
+              	<td colspan="2">
+              	<c:set var="organ_view" value="${sanatoriumInfo.organ_view }"/>
+             	<select name="organ_view" class="form-control" >
+					<option value="미노출"  <c:if test="${organ_grade eq '미노출'}"> selected</c:if>>미노출</option>
+					<option value="노출" <c:if test="${organ_grade eq '노출'}"> selected</c:if>>노출</option>
+				</select>
+				</td>
               </tr>
               <tr>
               	<th>타입</th>
